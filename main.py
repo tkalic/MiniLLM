@@ -1,13 +1,20 @@
-# Import necessary libraries
+import json
 from transformers import pipeline
 
-# Load the GPT-2 model using Hugging Face's pipeline
-# `truncation=True` ensures that long input texts are automatically shortened.
+# Load GPT-2 model
 generator = pipeline("text-generation", model="gpt2", truncation=True)
+
+# Load training data from JSON file
+def load_training_data():
+    with open("training_data.json", "r") as file:
+        return {entry["input"]: entry["output"] for entry in json.load(file)}
+
+custom_data = load_training_data()
 
 def generate_text(prompt, max_length=50):
     """
     Generates text based on the given prompt.
+    Uses predefined answers for known questions, otherwise GPT-2 generates text.
 
     Parameters:
     prompt (str): The input text that serves as the starting point.
@@ -17,19 +24,16 @@ def generate_text(prompt, max_length=50):
     str: The generated text.
     """
 
-    # Generate text using the model
-    result = generator(
-        prompt, 
-        max_length=max_length, 
-        pad_token_id=50256  # GPT-2 does not have a default pad token, so we use the EOS token (50256)
-    )
+    if prompt in custom_data:
+        return custom_data[prompt]
     
+    result = generator(prompt, max_length=max_length, pad_token_id=50256)
     return result[0]["generated_text"]
 
 if __name__ == "__main__":
-    # Prompt input from the user
-    user_input = input("Enter a prompt: ")
-
-    # Generate and print the text
-    output = generate_text(user_input)
-    print("\nGenerated Text:\n", output)
+    while True:
+        user_input = input("\nAsk me about my GitHub project (or type 'exit' to quit): ")
+        if user_input.lower() == "exit":
+            break
+        output = generate_text(user_input)
+        print("\nGenerated Response:\n", output)

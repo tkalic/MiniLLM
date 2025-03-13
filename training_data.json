@@ -1,0 +1,6 @@
+[
+    {"input": "What is your GitHub project about?", "output": "My project is an AI chatbot using GPT-2."},
+    {"input": "What programming languages do you use?", "output": "I mainly use Python, JavaScript, and C++."},
+    {"input": "How can I contribute to your project?", "output": "You can fork the repository on GitHub and submit a pull request."},
+    {"input": "What libraries are used in this project?", "output": "This project uses Hugging Face Transformers, PyTorch, and Gradio."}
+]
