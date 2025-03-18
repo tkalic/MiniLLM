@@ -1,1 +1,7 @@
+# Ignore virtual environment
 venv/
+
+# Ignore large model files and logs
+trained_model/
+logs/
+training_data.json
