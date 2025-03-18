@@ -5,3 +5,6 @@ venv/
 trained_model/
 logs/
 training_data.json
+trained_model/
+my_mini_llm/
+training_data.json
