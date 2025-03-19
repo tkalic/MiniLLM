@@ -131,14 +131,25 @@ Alternatively, you can use your own training data, such as:
 | `learning_rate`               | Learning rate of the model                      | `5e-5`       | `1e-4, 3e-5` |
 | `tokenizer.pad_token`         | Default pad token for GPT-2                     | `tokenizer.eos_token` | `"[PAD]"` |
 
-## 7. Interesting Facts About AI
+## 7. Key Terms Explained in Simple Words
+
+- **Token**: The smallest unit of a text (word or character) that the model processes.
+- **Tokenization**: The process of converting text into individual tokens before the model can understand it.
+- **Batched** Processing: Training and inference are done in batches (groups of data) to optimize computational efficiency.
+- **Truncation**: Cutting off long inputs to fit within the model’s maximum token limit.
+- **Padding**: Filling shorter inputs with extra tokens to ensure all inputs have the same length.
+- **Epochs**: The number of times the model goes through the entire dataset during training.
+- **Pipeline**: A simplified Hugging Face interface for handling various NLP tasks.
+- **Dataset**: A collection of texts or data used for training the model.
+
+## 8. Interesting Facts About AI
 
 - **10-15% of total computing power** in modern LLMs is used to reduce bias in generated text.
 - **Modern AI models have more parameters than the human brain has synapses** – GPT-4 is estimated to have over **one trillion** parameters.
 - **Data quality is more important than data quantity** – A small, clean dataset often yields better results than massive amounts of unstructured data.
 - **AI requires constant fine-tuning** – Even advanced models must be retrained regularly to stay up to date.
 
-## 8. Further Development
+## 9. Further Development
 
 - More training data for better results.
 - Creating a web interface with Gradio or Streamlit.
